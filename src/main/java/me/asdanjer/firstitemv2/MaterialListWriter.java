@@ -1,4 +1,6 @@
 package me.asdanjer.firstitemv2;
+import org.bukkit.Bukkit;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -17,10 +19,8 @@ public class MaterialListWriter {
                 bufferedWriter.write(materialInfo);
                 bufferedWriter.newLine();
             }
-
-            System.out.println("Material list has been written to the file.");
         } catch (IOException e) {
-            System.err.println("An error occurred while writing the material list to the file.");
+            Bukkit.getLogger().info("An error occurred while writing the material list to the file.");
             e.printStackTrace();
         }
     }

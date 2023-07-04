@@ -1,4 +1,5 @@
 package me.asdanjer.firstitemv2;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 import java.io.BufferedReader;
@@ -12,7 +13,7 @@ public class MaterialImporter {
     public static List<Material> importMaterials(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {
-            System.out.println("File not found: " + filePath);
+            Bukkit.getLogger().info("File not found: " + filePath);
             return new ArrayList<>(); // Return an empty list if the file doesn't exist
         }
         List<Material> materials = new ArrayList<>();
@@ -24,7 +25,7 @@ public class MaterialImporter {
                 if (material != null) {
                     materials.add(material);
                 } else {
-                    System.out.println("Unknown material: " + line);
+                    Bukkit.getLogger().info("Unknown material: " + line);
                 }
             }
         } catch (IOException e) {

@@ -2,16 +2,13 @@ package me.asdanjer.firstitemv2;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,14 +22,14 @@ public final class Firstitemv2 extends JavaPlugin implements Listener {
     List<Material> materials = new ArrayList<>();
     public static List<String> gottenmatierals = new ArrayList<>();
     public static List<String> playergotten = new ArrayList<>();
-    public static String outputfile = "plugins/Firstitemv2/materials_out.txt";
+    public static final String MATIRALFILE = "plugins/Firstitemv2/materials.txt";
+    public static final String OUTPUTFILE = "plugins/Firstitemv2/materials_out.txt";
     @Override
     public void onEnable() {
 
         getServer().getPluginManager().registerEvents(this, this);
-        String filePath = "plugins/Firstitemv2/materials.txt";
-        materials = MaterialImporter.importMaterials(filePath);
-        materialsout = MaterialImporter.importMaterials(outputfile);
+        materials = MaterialImporter.importMaterials(MATIRALFILE);
+        materialsout = MaterialImporter.importMaterials(OUTPUTFILE);
         materials.removeAll(materialsout);
         new Save().runTaskTimerAsynchronously(this, 6000, 6000);
 
@@ -56,9 +53,9 @@ public final class Firstitemv2 extends JavaPlugin implements Listener {
     @EventHandler
     public void transfer(InventoryClickEvent item){
         if(item.getCurrentItem()!=null) {
-            Material currentmatirial = item.getCurrentItem().getType();
-            if (item.getInventory().getType() != InventoryType.PLAYER && item.getAction() != InventoryAction.NOTHING && !currentmatirial.isAir()) {
-                itemcheck(currentmatirial, (Player) item.getWhoClicked());
+            Material currentmaterial = item.getCurrentItem().getType();
+            if (item.getInventory().getType() != InventoryType.PLAYER && item.getAction() != InventoryAction.NOTHING && !currentmaterial.isAir()) {
+                itemcheck(currentmaterial, (Player) item.getWhoClicked());
             }
         }
 
@@ -68,7 +65,7 @@ public final class Firstitemv2 extends JavaPlugin implements Listener {
             materials.remove(item);
             gottenmatierals.add(item.name());
             playergotten.add(p.getDisplayName());
-            Bukkit.broadcastMessage(p.getDisplayName()+ " has just got the first " + item.name().replace("_", " ").toLowerCase() + ". Better rename it and cherisch it forever!");
+            Bukkit.broadcastMessage(p.getDisplayName()+ " has just got the first " + item.name().replace("_", " ").toLowerCase() + ". Better rename it and cherish it forever!");
         }
 
     }

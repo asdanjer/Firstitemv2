@@ -9,6 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
@@ -50,6 +52,16 @@ public final class Firstitemv2 extends JavaPlugin implements Listener {
         ItemStack result = item.getRecipe().getResult();
         if(result!=null && item.getAction() != InventoryAction.NOTHING){
         itemcheck(item.getRecipe().getResult().getType(), (Player) item.getWhoClicked());}
+    }
+    @EventHandler
+    public void transfer(InventoryClickEvent item){
+        if(item.getCurrentItem()!=null) {
+            Material currentmatirial = item.getCurrentItem().getType();
+            if (item.getInventory().getType() != InventoryType.PLAYER && item.getAction() != InventoryAction.NOTHING && !currentmatirial.isAir()) {
+                itemcheck(currentmatirial, (Player) item.getWhoClicked());
+            }
+        }
+
     }
     public void itemcheck(Material item, Player p){
         if(materials.contains(item)){

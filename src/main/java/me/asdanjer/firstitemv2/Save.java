@@ -6,7 +6,7 @@ class Save extends BukkitRunnable {
     @Override
     public void run() {
 
-        MaterialListWriter.writeMaterialListToFile(Firstitemv2.gottenmatierals,Firstitemv2.outputfile);
+        MaterialListWriter.writeMaterialListToFile(Firstitemv2.gottenmatierals,Firstitemv2.OUTPUTFILE);
     }
 }
 

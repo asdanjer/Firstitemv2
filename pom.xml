@@ -6,7 +6,7 @@
 
     <groupId>me.asdanjer</groupId>
     <artifactId>firstitemv2</artifactId>
-    <version>0.2</version>
+    <version>0.21</version>
     <packaging>jar</packaging>
 
     <name>firstitemv2</name>

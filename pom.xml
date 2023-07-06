@@ -6,7 +6,7 @@
 
     <groupId>me.asdanjer</groupId>
     <artifactId>firstitemv2</artifactId>
-    <version>0.12</version>
+    <version>0.2</version>
     <packaging>jar</packaging>
 
     <name>firstitemv2</name>
@@ -46,6 +46,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
                     <outputDirectory>C:\Users\asdan\Desktop\server\plugins</outputDirectory>
                 </configuration>

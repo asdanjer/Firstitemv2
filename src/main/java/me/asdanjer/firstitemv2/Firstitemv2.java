@@ -22,8 +22,11 @@ public final class Firstitemv2 extends JavaPlugin implements Listener {
     List<Material> materials = new ArrayList<>();
     public static List<String> gottenmatierals = new ArrayList<>();
     public static List<String> playergotten = new ArrayList<>();
+
     public static final String MATIRALFILE = "plugins/Firstitemv2/materials.txt";
     public static final String OUTPUTFILE = "plugins/Firstitemv2/materials_out.txt";
+    public static final String LOGFILE = "plugins/Firstitemv2/log.txt";
+    LineExport appender = new LineExport(LOGFILE);
     @Override
     public void onEnable() {
 
@@ -65,6 +68,7 @@ public final class Firstitemv2 extends JavaPlugin implements Listener {
             materials.remove(item);
             gottenmatierals.add(item.name());
             playergotten.add(p.getDisplayName());
+            appender.appendToDocument(p.getDisplayName() + " " + item.name()+ " " + System.currentTimeMillis() + " " + p.getLocation().getX() + " " + p.getLocation().getY() + " " + p.getLocation().getZ());
             Bukkit.broadcastMessage(p.getDisplayName()+ " has just got the first " + item.name().replace("_", " ").toLowerCase() + ". Better rename it and cherish it forever!");
         }
 

@@ -68,7 +68,7 @@ public final class Firstitemv2 extends JavaPlugin implements Listener {
             materials.remove(item);
             gottenmatierals.add(item.name());
             playergotten.add(p.getDisplayName());
-            appender.appendToDocument(p.getDisplayName() + " " + item.name()+ " " + System.currentTimeMillis() + " " + p.getLocation().getX() + " " + p.getLocation().getY() + " " + p.getLocation().getZ());
+            appender.appendToDocument(p.getDisplayName() + " " + item.name()+ " " + System.currentTimeMillis() + " " + p.getLocation().getX() + " " + p.getLocation().getY() + " " + p.getLocation().getZ() + " " + p.getWorld().toString().substring(16).replace("}", "") );
             Bukkit.broadcastMessage(p.getDisplayName()+ " has just got the first " + item.name().replace("_", " ").toLowerCase() + ". Better rename it and cherish it forever!");
         }
 
